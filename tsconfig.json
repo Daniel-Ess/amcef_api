@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+		"esModuleInterop": true,
+        "target": "es2020",
+        "module": "commonjs",
+    	"outDir": "./dist",
+		"sourceMap": true,
+        "noImplicitAny": true,
+		"typeRoots" : [
+            "node_modules/@types",
+            "./src/types/interfaces",
+            "./src/types/models"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+	],
+	"exclude": [
+        "node_modules"
+    ]
+}

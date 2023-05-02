@@ -1,0 +1,15 @@
+/**
+*   @apiDefine ErrorResponse
+*       @apiVersion 1.0.0
+*       @apiError (Errors 401 | 403 | 404 | 409 | 500) {Object[]} messages Array of error objects
+*       @apiError (Errors 401 | 403 | 404 | 409 | 500) {String="Error"} messages.type Type of message
+*       @apiError (Errors 401 | 403 | 404 | 409 | 500) {String} messages.message Message text
+*       @apiErrorExample Error-response:
+*       HTTP/1.1 400 BadRequest
+*       {
+*           "messages": [{
+*               "type": "ERROR",
+*               "message": "Error message"
+*           }]
+*       }
+*/
