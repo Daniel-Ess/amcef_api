@@ -1,4 +1,8 @@
-import { IServerConfig, IDatabaseConfig, IConfig } from '../src/types/interfaces'
+import { ExtractJwt } from 'passport-jwt'
+
+import {
+	IServerConfig, IDatabaseConfig, IConfig, IPassportConfig
+} from '../src/types/interfaces'
 
 export default {
 	server: <IServerConfig>{
@@ -7,11 +11,22 @@ export default {
 		logDirectory: 'logs'
 	},
 	database: <IDatabaseConfig>{
-		user: process.env.DB_USER || 'user',
-		name: process.env.DB_NAME || 'name',
-		pass: process.env.DB_PASS || 'pass',
+		host: process.env.DB_HOST || 'localhost',
+		port: process.env.DB_PORT || '5432',
+		name: process.env.DB_NAME,
+		user: process.env.DB_USER,
+		pass: process.env.DB_PASS,
+		dialect: 'postgres'
 	},
-	jwt: {
-		secret: process.env.JWT_SECRET
+	passport: <IPassportConfig>{
+		secret: process.env.JWT_SECRET,
+		defaultUser: process.env.DEFAULT_USER || 'user',
+		defaultPass: process.env.DEFAULT_USER || 'pass',
+		api: {
+			exp: '2h',
+			audience: 'jwt-api',
+			jwtFromRequest: ExtractJwt.fromExtractors([ExtractJwt.fromAuthHeaderAsBearerToken(), ExtractJwt.fromUrlQueryParameter('t')]),
+			passReqToCallback: true
+		}
 	}
 } as IConfig
