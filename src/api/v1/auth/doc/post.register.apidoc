@@ -1,0 +1,43 @@
+/**
+    @api {post} v1/users Create user
+    @apiVersion 1.0.0
+    @apiName PostCreateUser
+    @apiGroup Users
+
+    @apiDescription Endpoint for creating user
+
+    @apiUse AuthorizationHeader
+    @apiPermission SUPER_ADMIN, ADMIN, USER_CREATE
+
+    @apiParam (Body) {String{..50}} name User name
+    @apiParam (Body) {String{..255}} password User password
+
+    @apiParamExample {json} Request-Body-Example:
+    {
+        "name": "user",
+        "password": "pass"
+    }
+
+    @apiSuccess (Response) {Object[]} messages Array of message objects
+    @apiSuccess (Response) {String} messages.message Message text
+    @apiSuccess (Response) {String} messages.type="SUCCESS" Message type
+    @apiSuccess (Response) {Object} user Object of newly created user
+    @apiSuccess (Response) {Number} user.id Newly created user ID
+    @apiSuccess (Response) {String} user.name Newly created user name
+
+
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "messages": [{
+            "message": "User created successfully",
+			"type": "SUCCESS"
+        }],
+        "user": {
+            "id": 2,
+            "name": "user"
+        }
+    }
+
+    @apiUse ErrorResponse
+*/

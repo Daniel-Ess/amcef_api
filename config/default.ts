@@ -1,7 +1,10 @@
 import { ExtractJwt } from 'passport-jwt'
 
 import {
-	IServerConfig, IDatabaseConfig, IConfig, IPassportConfig
+	IServerConfig,
+	IDatabaseConfig,
+	IConfig,
+	IPassportConfig
 } from '../src/types/interfaces'
 
 export default {
@@ -12,16 +15,23 @@ export default {
 	},
 	database: <IDatabaseConfig>{
 		host: process.env.DB_HOST || 'localhost',
-		port: process.env.DB_PORT || '5432',
+		port: process.env.DB_PORT || 5432,
 		name: process.env.DB_NAME,
 		user: process.env.DB_USER,
-		pass: process.env.DB_PASS,
-		dialect: 'postgres'
+		pass: process.env.DB_PASS
 	},
 	passport: <IPassportConfig>{
 		secret: process.env.JWT_SECRET,
-		defaultUser: process.env.DEFAULT_USER || 'user',
-		defaultPass: process.env.DEFAULT_USER || 'pass',
+		defaultUser: {
+			name: process.env.DEFAULT_USER || 'admin',
+			password: process.env.DEFAULT_PASS || 'adminPass',
+		},
+		local: {
+			usernameField: 'name',
+			passwordField: 'password',
+			session: false,
+			passReqToCallback: true
+		},
 		api: {
 			exp: '2h',
 			audience: 'jwt-api',

@@ -1,11 +1,11 @@
 import { Router } from 'express'
 
-import TestRouter from './test'
+import AuthRouter from './auth'
 
 const router = Router()
 
 export default () => {
-	router.use('/test', TestRouter())
+	router.use('/auth', AuthRouter())
 
 	return router
 }

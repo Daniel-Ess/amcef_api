@@ -1,0 +1,36 @@
+/**
+    @api {post} v1/auth/login User login
+    @apiVersion 1.0.0
+    @apiName PostUserLogin
+    @apiGroup Authorization
+
+    @apiDescription Login user to system
+
+    @apiPermission none
+
+    @apiParam (Body) {String{..50}} name User email
+    @apiParam (Body) {String{..255}} password User password
+
+    @apiParamExample {json} Request-Body-Example:
+    {
+        "name": "user",
+        "password": "pass"
+    }
+
+    @apiSuccess (Response) {String} accessToken Access token
+    @apiSuccess (Response) {Object} profile Profile object
+    @apiSuccess (Response) {Number} profile.id User ID
+    @apiSuccess (Response) {String} profile.fullName User full name
+
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "accessToken": "oangjangjngajgnajkgnagklga.faojgangijngjskgnajgag54g61g78g178g1GW78G1E78G91G7.SG1AG178GA1G789G5145G1GA54G1",
+        "profile": {
+            "id": 1,
+            "name": "user"
+        }
+    }
+
+    @apiUse ErrorResponse
+*/

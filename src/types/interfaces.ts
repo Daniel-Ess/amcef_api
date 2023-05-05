@@ -1,4 +1,5 @@
 import { JwtFromRequestFunction } from 'passport-jwt'
+import { IStrategyOptionsWithRequest as IPassportLocalStrategyOptions } from 'passport-local'
 
 export interface IServerConfig {
 	port: number
@@ -7,11 +8,11 @@ export interface IServerConfig {
 }
 
 export interface IDatabaseConfig {
+	host: string
+	port: number
 	user: string
 	name: string
 	pass: string
-	host: string
-	port: string
 }
 
 export interface IErrorBuilderItem {
@@ -20,17 +21,28 @@ export interface IErrorBuilderItem {
 	path?: string
 }
 
-interface IPassportJWTConfig {
+export interface IPassportJWTConfig {
 	jwtFromRequest: JwtFromRequestFunction
 	exp: string
 	audience: string
 	passReqToCallback: boolean
 }
 
+export interface IDefaultUserConfig {
+	name: string
+	password: string
+}
+
+export interface IJwtPayload {
+	uid: number
+	exp: number
+	aud: string
+}
+
 export interface IPassportConfig {
 	secret: string
-	defaultUser: string
-	defaultPass: string
+	defaultUser: IDefaultUserConfig
+	local: IPassportLocalStrategyOptions
 	api: IPassportJWTConfig
 }
 
