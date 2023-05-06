@@ -37,7 +37,7 @@ export default (sequelize: Sequelize, DataTypes: any) => {
 		paranoid: true,
 		timestamps: true,
 		sequelize,
-		modelName: 'User'
+		modelName: 'user'
 	})
 
 	UserModel.associate = (models) => {

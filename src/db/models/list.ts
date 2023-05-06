@@ -36,7 +36,7 @@ export default (sequelize: Sequelize, DataTypes: any) => {
 			sequelize,
 			timestamps: true,
 			paranoid: true,
-			modelName: 'List'
+			modelName: 'list'
 		}
 	)
 

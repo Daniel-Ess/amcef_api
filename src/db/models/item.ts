@@ -57,7 +57,7 @@ export default (sequelize: Sequelize, DataTypes: any) => {
 		sequelize,
 		timestamps: true,
 		paranoid: true,
-		modelName: 'Item'
+		modelName: 'item'
 	})
 
 	ItemModel.associate = (models) => {

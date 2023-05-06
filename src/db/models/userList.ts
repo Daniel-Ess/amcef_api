@@ -30,7 +30,7 @@ export default (sequelize: Sequelize, DataTypes: any) => {
 	}, {
 		timestamps: true,
 		sequelize,
-		modelName: 'UserList'
+		modelName: 'userList'
 	})
 	UserListModel.associate = (models) => {
 		UserListModel.belongsTo(models.List, { foreignKey: 'listID' })
