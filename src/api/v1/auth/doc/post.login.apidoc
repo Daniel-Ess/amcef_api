@@ -6,8 +6,6 @@
 
     @apiDescription Login user to system
 
-    @apiPermission none
-
     @apiParam (Body) {String{..50}} name User email
     @apiParam (Body) {String{..255}} password User password
 

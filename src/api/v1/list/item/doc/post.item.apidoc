@@ -1,0 +1,44 @@
+/**
+    @api {post} v1/list/:listID/item Create item associated to a list
+    @apiVersion 1.0.0
+    @apiName PostItem
+    @apiGroup Item
+
+    @apiDescription Endpoint will create a new list that will be by default assigned to logged user and optionally selected users by id
+
+    @apiUse AuthorizationHeader
+
+    @apiParam (Param) {Number{1..}} listID ID of list to be associated with item
+
+    @apiParam (Body) {String{..50}} title Item title
+    @apiParam (Body) {String{..255}} description Item description
+    @apiParam (Body) {Date} deadline Item deadline
+
+    @apiParamExample {json} Request-Body-Example:
+    {
+        "title": "item title",
+        "description": "item description",
+        "deadline": "2023-05-06T08:41:00Z"
+    }
+
+    @apiSuccess (Response) {Object[]} messages Array of message objects
+    @apiSuccess (Response) {String} messages.message Message text
+    @apiSuccess (Response) {String} messages.type="SUCCESS" Message type
+    @apiSuccess (Response) {Object} item Object of newly created item
+    @apiSuccess (Response) {Number} item.id Newly created item ID
+
+
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "messages": [{
+            "message": "Item created successfully",
+			"type": "SUCCESS"
+        }],
+        "item": {
+            "id": 2
+        }
+    }
+
+    @apiUse ErrorResponse
+*/

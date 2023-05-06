@@ -67,7 +67,7 @@ export const workflow = async (req: Request, res: Response, next: NextFunction) 
 
 		const messages = [{
 			type: MESSAGE_TYPE.SUCCESS,
-			message: 'List added to user successfully'
+			message: 'List shared to user successfully'
 		}]
 
 		return res.json({

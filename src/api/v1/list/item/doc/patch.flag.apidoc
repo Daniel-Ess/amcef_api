@@ -1,0 +1,34 @@
+/**
+    @api {patch} v1/list/item/:itemID/flag  Update item flag
+    @apiVersion 1.0.0
+    @apiName PatchFlag
+    @apiGroup Item
+
+    @apiDescription Endpoint will update flag of item that is associated with user through list associated with item
+
+    @apiUse AuthorizationHeader
+
+    @apiParam (Param) {Number{1..}} itemID Item ID
+
+    @apiParam (Body) {String="TODO","IN_PROGRESS","CANCELLED","DONE"} flag Item flag 
+
+    @apiParamExample {json} Request-Body-Example:
+    {
+        "flag": "IN_PROGRESS"
+    }
+
+    @apiSuccess (Response) {Object[]} messages Array of message objects
+    @apiSuccess (Response) {String} messages.message Message text
+    @apiSuccess (Response) {String} messages.type="SUCCESS" Message type
+
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "messages": [{
+            "message": "Item flag updated successfully",
+			"type": "SUCCESS"
+        }]
+    }
+
+    @apiUse ErrorResponse
+*/

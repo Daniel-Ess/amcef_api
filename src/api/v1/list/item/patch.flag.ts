@@ -61,14 +61,11 @@ export const workflow = async (req: Request, res: Response, next: NextFunction) 
 
 		const messages = [{
 			type: MESSAGE_TYPE.SUCCESS,
-			message: 'Item updated successfully'
+			message: 'Item flag updated successfully'
 		}]
 
 		return res.json({
-			messages,
-			item: {
-				id: item.id,
-			}
+			messages
 		})
 	} catch (error) {
 		return next(error)

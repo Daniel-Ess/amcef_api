@@ -1,28 +1,27 @@
 /**
-    @api {post} v1/users Create user
+    @api {post} v1/list Create list
     @apiVersion 1.0.0
-    @apiName PostCreateUser
-    @apiGroup Users
+    @apiName PostList
+    @apiGroup List
 
-    @apiDescription Endpoint for creating user
+    @apiDescription Endpoint will create a new list that will be by default assigned to logged user and optionally selected users by id
 
     @apiUse AuthorizationHeader
 
-    @apiParam (Body) {String{..50}} name User name
-    @apiParam (Body) {String{..255}} password User password
+    @apiParam (Body) {String{..50}} name List name
+    @apiParam (Body) {Number[]{1..}=[]} [userIDs] User IDs
 
     @apiParamExample {json} Request-Body-Example:
     {
-        "name": "user",
-        "password": "pass"
+        "name": "list name",
+        "userIDs": [1, 2, ...]
     }
 
     @apiSuccess (Response) {Object[]} messages Array of message objects
     @apiSuccess (Response) {String} messages.message Message text
     @apiSuccess (Response) {String} messages.type="SUCCESS" Message type
-    @apiSuccess (Response) {Object} user Object of newly created user
-    @apiSuccess (Response) {Number} user.id Newly created user ID
-    @apiSuccess (Response) {String} user.name Newly created user name
+    @apiSuccess (Response) {Object} list Object of newly created list
+    @apiSuccess (Response) {Number} list.id Newly created list ID
 
 
     @apiSuccessExample Success-Response-Example:
@@ -32,9 +31,8 @@
             "message": "User created successfully",
 			"type": "SUCCESS"
         }],
-        "user": {
-            "id": 2,
-            "name": "user"
+        "list": {
+            "id": 2
         }
     }
 

@@ -1,0 +1,38 @@
+/**
+    @api {get} v1/list Get all lists with items
+    @apiVersion 1.0.0
+    @apiName GetLists
+    @apiGroup List
+
+    @apiDescription Endpoint will return all lists and associated items of lists
+
+    @apiSuccess (Response) {Object[]} lists Array of lists
+    @apiSuccess (Response) {Number{1..}} lists.id List ID
+    @apiSuccess (Response) {String} lists.name List name 
+    @apiSuccess (Response) {Object[]} lists.items Array of items in list
+    @apiSuccess (Response) {Number{1..}} lists.items.id Item ID
+    @apiSuccess (Response) {String} lists.items.title Item title 
+    @apiSuccess (Response) {String} lists.items.description Item description 
+    @apiSuccess (Response) {Date} lists.items.deadline Item deadline 
+    @apiSuccess (Response) {String="TODO","IN_PROGRESS","CANCELLED","DONE"} lists.items.flag Item flag 
+    @apiSuccess (Response) {Number{1..}} lists.items.createdBy User ID of user who created the item
+    
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "lists": [{
+            "id": 1,
+			"name": "list name",
+            items: [{
+                "id": 1,
+			    "title": "item title",
+                "description": "item description",
+                "deadline": "2023-05-06T08:41:00Z"
+                "flag": "TODO"
+                "createdBy": 1
+            }]
+        }]
+    }
+
+    @apiUse ErrorResponse
+*/

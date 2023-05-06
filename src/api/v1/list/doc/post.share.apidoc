@@ -1,0 +1,28 @@
+/**
+    @api {post} v1/list/:listID/share/:userID Share list to another user
+    @apiVersion 1.0.0
+    @apiName PostShare
+    @apiGroup List
+
+    @apiDescription Share list assigned to logged user to new user
+
+    @apiUse AuthorizationHeader
+
+    @apiParam (Param) {Number{1..}} listID List ID
+    @apiParam (Param) {Number{1..}} userID User ID
+
+    @apiSuccess (Response) {Object[]} messages Array of message objects
+    @apiSuccess (Response) {String} messages.message Message text
+    @apiSuccess (Response) {String} messages.type="SUCCESS" Message type
+
+    @apiSuccessExample Success-Response-Example:
+    HTTP/1.1 200 OK
+    {
+        "messages": [{
+            "message": "List shared to user successfully",
+			"type": "SUCCESS"
+        }]
+    }
+
+    @apiUse ErrorResponse
+*/

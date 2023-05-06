@@ -3,12 +3,15 @@ import { Sequelize } from 'sequelize'
 import DatabaseModel from '../../types/models'
 // eslint-disable-next-line import/no-cycle
 import { UserModel } from './user'
+// eslint-disable-next-line import/no-cycle
+import { ItemModel } from './item'
 
 export class ListModel extends DatabaseModel {
 	id: number
 	name: string
 	// FK
 	users: UserModel[]
+	items: ItemModel[]
 	// metadata
 	createdAt: Date
 	updatedAt: Date
