@@ -27,6 +27,7 @@ export default (sequelize: Sequelize, DataTypes: any) => {
 		name: {
 			type: DataTypes.TEXT,
 			allowNull: false,
+			unique: true
 		},
 		hash: {
 			type: DataTypes.TEXT,

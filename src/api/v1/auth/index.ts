@@ -38,7 +38,7 @@ export default () => {
 
 	router.post(
 		'/register',
-		passport.authenticate('jwt-api'),
+		passport.authenticate('jwt-api', { session: false }),
 		validationMiddleware(postRegister.schema),
 		postRegister.workflow
 	)

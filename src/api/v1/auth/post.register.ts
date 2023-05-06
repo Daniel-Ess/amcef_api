@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import Joi from 'joi'
-import { Op, Transaction } from 'sequelize'
+import { Op } from 'sequelize'
 
 import models from '../../../db/models'
 
@@ -19,7 +19,6 @@ export const schema = Joi.object({
 })
 
 export const workflow = async (req: Request, res: Response, next: NextFunction) => {
-	let transaction: Transaction
 	try {
 		const { body } = req
 		const {
@@ -36,11 +35,11 @@ export const workflow = async (req: Request, res: Response, next: NextFunction) 
 			throw new ErrorBuilder(409, 'User with the specified name already exists')
 		}
 
-		const password = await createHash(body.password)
+		const hash = await createHash(body.password)
 
 		const newUser = await User.create({
 			name: body.name,
-			password
+			hash
 		})
 
 		const messages = [{
@@ -56,9 +55,6 @@ export const workflow = async (req: Request, res: Response, next: NextFunction) 
 			}
 		})
 	} catch (error) {
-		if (transaction) {
-			await transaction.rollback()
-		}
 		return next(error)
 	}
 }
