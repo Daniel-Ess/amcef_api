@@ -23,8 +23,8 @@ export default {
 	passport: <IPassportConfig>{
 		secret: process.env.JWT_SECRET,
 		defaultUser: {
-			name: process.env.DEFAULT_USER || 'admin',
-			password: process.env.DEFAULT_PASS || 'adminPass',
+			name: process.env.DEFAULT_USER || 'user',
+			password: process.env.DEFAULT_PASS || 'pass',
 		},
 		local: {
 			usernameField: 'name',
